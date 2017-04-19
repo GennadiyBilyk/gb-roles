@@ -9,6 +9,7 @@ php artisan make:auth перед установкой
      
      #Установка пакета
      	 Добавляем в composer.json require секция "gennadiy-bilyk/roles":"*@dev"
+     	 composer update
           
           Добавляем сервис провайдеры в config/app
      	       GennadiyBilyk\Roles\RolesProvider::class,
@@ -18,6 +19,30 @@ php artisan make:auth перед установкой
      	  php artisan vendor:publish --provider="GennadiyBilyk\Roles\RolesProvider" --force
      	  
      	  Заюзаем трэйт  App\Models\Permission\HasRoles в модель User
+     	  
+     	  Добавим в модель User методы
+     	    /**
+               * @return bool
+               */
+              public function isSuperAdmin()
+              {
+                  return $this->hasRole('admin');
+              }
+              
+              /**
+               * @param string $password
+               */
+              public function setPasswordAttribute($password)
+              {
+                  if(!empty($password)) {
+                      $this->attributes['password'] = bcrypt($password);
+                  }
+              }
+     	  
+     	  
+     	  
+     	  Добавим вызов сидера в database/DatabaseSeeder.php
+     	  $this->call(PermissionsRolesSeeder::class);
      	  
      	  Выполним
      	  php artisan migrate
