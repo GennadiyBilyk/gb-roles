@@ -12,7 +12,7 @@ trait HasRoles
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany('App\Models\Permission\Role', 'role_user');
     }
 
     /**
@@ -42,13 +42,7 @@ trait HasRoles
 
         return !! $role->intersect($this->roles)->count();
     }
-
-
-    public function isAdmin()
-    {
-        //todo обработать
-      return true;
-    }
+    
 
     /**
      * Determine if the user may perform the given permission.

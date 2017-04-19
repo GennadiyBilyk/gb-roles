@@ -75,11 +75,10 @@ class Users extends Section
     {
         return AdminForm::panel()->addBody([
             AdminFormElement::text('name', 'Username')->required(),
-            AdminFormElement::password('password', 'Password')->required()->addValidationRule('min:6'),
+            AdminFormElement::password('password', 'Password'),
             AdminFormElement::text('email', 'E-mail')->required()->addValidationRule('email'),
             AdminFormElement::multiselect('roles', 'Roles', Role::class)->setDisplay('name'),
-            AdminFormElement::upload('avatar', 'Avatar')->addValidationRule('image'),
-            AdminColumn::image('avatar')->setWidth('150px'),
+
         ]);
     }
 
