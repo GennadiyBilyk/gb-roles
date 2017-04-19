@@ -1,0 +1,22 @@
+{
+    "name": "gennadiy-bilyk/roles",
+    "description": "roles sleeping owl admin",
+    "require-dev": {
+        "laravelrus/sleepingowl": "^4.95"
+    },
+    "license": "MIT",
+    "version":"1.0.0",
+    "authors": [
+        {
+            "name": "Gennadiy Bilyk",
+            "email": "gennadiy_bilyk@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "GennadiyBilyk\\Roles\\":""
+        }
+    }
+}
