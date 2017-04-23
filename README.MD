@@ -29,17 +29,7 @@ php artisan make:auth перед установкой
                   return $this->hasRole('admin');
               }
               
-              /**
-               * @param string $password
-               */
-              public function setPasswordAttribute($password)
-              {
-                  if(!empty($password)) {
-                      $this->attributes['password'] = bcrypt($password);
-                  }
-              }
-     	  
-     	  
+   
      	  
      	  Добавим вызов сидера в database/DatabaseSeeder.php
      	  $this->call(PermissionsRolesSeeder::class);

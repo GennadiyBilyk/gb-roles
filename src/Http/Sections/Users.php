@@ -74,9 +74,8 @@ class Users extends Section
     public function onEdit($id)
     {
         return AdminForm::panel()->addBody([
-            AdminFormElement::text('name', 'Username')->required(),
-            AdminFormElement::password('password', 'Password'),
-            AdminFormElement::text('email', 'E-mail')->required()->addValidationRule('email'),
+            AdminFormElement::text('name', 'Username')->required()->setReadOnly(true),
+            AdminFormElement::text('email', 'E-mail')->required()->addValidationRule('email')->setReadOnly(true),
             AdminFormElement::multiselect('roles', 'Roles', Role::class)->setDisplay('name'),
 
         ]);
